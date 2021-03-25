@@ -1,8 +1,10 @@
 import glob
 import csv
+import os
 
-mypath = "C:/Users/caojf/Desktop/proj/poke-techs/superset/"
+mypath = "C:/Users/user/Desktop/proj/poke-techs/superset/"
 bucket = "gs://validation-upload-test-1/"
+csv_dest = os.path.realpath(__file__).replace('\\', '/').rsplit('/', 1)[0]+'/'
 
 ext = '.jpg'
 multilabel = True
@@ -22,6 +24,6 @@ for f in files:
     #print(row)
     row_list.append(row)
     
-with open(mypath+'labels.csv', 'w', newline='') as file:
+with open(csv_dest+'labels.csv', 'w', newline='') as file:
     writer = csv.writer(file, delimiter=',')
     writer.writerows(row_list)
