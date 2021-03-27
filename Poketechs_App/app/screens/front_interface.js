@@ -1,28 +1,31 @@
+import { useLinkProps } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView, View, Image, Button, Alert } from 'react-native';
-import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, Text, SafeAreaView, View, Image, Alert, TouchableOpacity } from 'react-native';
+import { endAsyncEvent } from 'react-native/Libraries/Performance/Systrace';
 
-let statusBarHeight = 30;
+// let statusBarHeight = 30;
 
-function Front_Interface() {
+function Front_Interface({navigation}) {
+
+    const pressHandler = () => {
+        // const selection = Alert.prompt("Enter an animal", "or else.");
+        // Alert.alert(selection);
+        navigation.navigate('Left');
+    };
+
     return (
         <SafeAreaView style={styles.container}>
-            <Image style={styles.topCamera} source={require('../assets/top-camera.png')} />
-            <Text style={styles.testText}>Front Interface</Text>
-            <Front_To_Left_Button/>
+            <Image source={require('../assets/top-camera.png')} />
+            <Text style={styles.tempText}>Front Interface</Text>
+            
+            <TouchableOpacity onPress={pressHandler}>
+                <Image style={styles.rightArrow}
+                    source={require('../assets/temp_right_button.png')}
+                />
+            </TouchableOpacity>
+
         </SafeAreaView>
     );
-}
-
-function Front_To_Left_Button() {
-    return (
-        <View backgroundColor={'white'}>
-            <Button
-                title="Move To Left Interface"
-                onPress={() => Alert.alert("Will Move To Left Interface")}
-            />
-        </View>
-    )
 }
 
 const styles = StyleSheet.create({
@@ -34,17 +37,16 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
         // justifyContent: 'center',
     },
-    testText: {
+    tempText: {
         color: 'white',
         alignSelf: 'center',
         padding: 100,
     },
-    topCamera: {
-        // width: 50,
-        // height: 50,
-        // resizeMode: 'stretch',
-        // position: 'absolute',
-        // alignSelf: 'flex-start',
+    rightArrow: {
+        left: '70%',
+        height: 100,
+        width: 100,
+        transform: [{scaleX: -1}]
     }
   });
 
