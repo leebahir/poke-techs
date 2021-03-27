@@ -1,67 +1,54 @@
-import React from 'react';
-import { StyleSheet, Text, SafeAreaView, View, Image, Button, TouchableOpacity } from 'react-native';
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  View,
+  Image,
+  Button,
+  TouchableOpacity,
+} from "react-native";
+
+import { arrowStyles } from "../styles/arrowStyles";
 
 let statusBarHeight = 30;
 
 // renders left interface component
-function Left_Interface( { navigation }) {
+function Left_Interface({ navigation }) {
+  const frontPressHandler = () => {
+    console.log("test");
+    navigation.navigate("Front");
+  };
+  const rightPressHandler = () => {
+    console.log("test");
+    navigation.navigate("Right");
+  };
 
-    const frontPressHandler = () => {
-        navigation.navigate('Front');
-    }
-    const rightPressHandler = () => {
-        navigation.navigate('Right');
-    }
-
-    return (
-        <SafeAreaView style={styles.container}>
-            <Image style={styles.topCamera} source={require('../assets/top-camera.png')} />
-            <Text style={styles.testText}>Left Interface</Text>
-            <View>
-                <TouchableOpacity onPress={frontPressHandler}>
-                    <Image style={styles.leftArrow}
-                        source={require('../assets/temp_right_button.png')}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={rightPressHandler}>
-                    <Image style={styles.rightArrow}
-                        source={require('../assets/temp_right_button.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        </SafeAreaView>
-    );
+  return (
+    <SafeAreaView style={arrowStyles.container}>
+      <Image source={require("../assets/top-camera.png")} />
+      <Text style={arrowStyles.testText}>Left Interface</Text>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <TouchableOpacity onPress={frontPressHandler}>
+          <Image
+            style={arrowStyles.leftArrow}
+            source={require("../assets/temp_right_button.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={rightPressHandler}>
+          <Image
+            style={arrowStyles.rightArrow}
+            source={require("../assets/temp_right_button.png")}
+          />
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#D12712',
-        // paddingTop: statusBarHeight,
-        // alignItems: 'center',
-        // justifyContent: 'center',
-    },
-    testText: {
-        color: 'white',
-        alignSelf: 'center',
-        padding: 100,
-    },
-    arrows: {
-        flex: 1,
-        position: 'absolute',
-    },
-    rightArrow: {
-        left: '76%',
-        height: 100,
-        width: 100,
-        transform: [{scaleX: -1}],
-        position: 'absolute',
-    },
-    leftArrow: {
-        height: 100,
-        width: 100,
-        position: 'absolute',
-    }
-  });
 
 export default Left_Interface;
