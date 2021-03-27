@@ -10,13 +10,10 @@ import {
 
 import { arrowStyles } from "../styles/arrowStyles";
 
-let statusBarHeight = 30;
+// let statusBarHeight = 30;
 
-// renders right interface component
 function Right_Interface({ navigation }) {
-  const frontPressHandler = () => {
-    navigation.navigate("Front");
-  };
+   
   const leftPressHandler = () => {
     navigation.navigate("Left");
   };
@@ -25,7 +22,7 @@ function Right_Interface({ navigation }) {
     <SafeAreaView style={arrowStyles.container}>
       <Image source={require("../assets/top-camera.png")} />
       <Text style={arrowStyles.testText}>Right Interface</Text>
-      <View>
+      <View style={arrowStyles.arrowOnLeft}>
         <TouchableOpacity onPress={leftPressHandler}>
           <Image
             style={arrowStyles.leftArrow}
@@ -33,11 +30,6 @@ function Right_Interface({ navigation }) {
           />
         </TouchableOpacity>
         {/* eventually, we may want a start over / go back to front button */}
-        {/* <TouchableOpacity onPress={frontPressHandler}>
-                    <Image style={styles.rightArrow}
-                        source={require('../assets/temp_right_button.png')}
-                    />
-                </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );

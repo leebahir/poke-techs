@@ -26,4 +26,16 @@ export const arrowStyles = StyleSheet.create({
     height: 100,
     width: 100,
   },
+  arrowOnRight: {
+    flexDirection: "row",
+    justifyContent: "flex-end"
+  },
+  arrowOnLeft: {
+    flexDirection: "row",
+    justifyContent: "flex-start"
+  },
+  doubleArrowRow: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  }
 });
