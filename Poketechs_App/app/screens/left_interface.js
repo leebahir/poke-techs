@@ -11,13 +11,13 @@ import { arrowStyles } from "../styles/arrowStyles";
 
 // let statusBarHeight = 30;
 
-function Left_Interface({ navigation }) {
+function Left_Interface({ navigation, route }) {
+  console.log(route.params.test)
+
   const frontPressHandler = () => {
-    console.log("test");
     navigation.navigate("Front");
   };
   const rightPressHandler = () => {
-    console.log("test");
     navigation.navigate("Right");
   };
 

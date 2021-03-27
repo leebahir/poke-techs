@@ -14,7 +14,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Test" component={Test_Interface} />
         <Stack.Screen name="Front" component={Front_Interface} />
         <Stack.Screen name="Left" component={Left_Interface} />
         <Stack.Screen name="Right" component={Right_Interface} />
