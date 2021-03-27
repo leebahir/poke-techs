@@ -17,6 +17,7 @@ for f in files:
     row = [f]
     if multilabel:
         labels = f.rsplit('/', 2)[1].split('_', 6)[1:]
+        print(labels)
         labels[-1] = labels[-1].replace('_', ' ')
     else:
         labels = [f.rsplit('/', 2)[1]]
@@ -27,3 +28,5 @@ for f in files:
 with open(csv_dest+'labels.csv', 'w', newline='') as file:
     writer = csv.writer(file, delimiter=',')
     writer.writerows(row_list)
+
+input("Enter to continue...")
