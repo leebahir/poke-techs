@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useState } from 'react';import * as ImagePicker from 'expo-image-picker';
+import { predict } from './submit_func'
 
 export default function UploadButton(){    
     //Creates 3 states/hooks for the element
@@ -58,9 +59,6 @@ export default function UploadButton(){
         }
     }
 
-    const predict = async() => {
-        Alert.alert("Not yet implemented")
-    }
 
     if (imageChosen){
         //NOTE: I think theres a better way of cascading these styles but it probably doesnt matter because things are gonna move around anyway
@@ -78,7 +76,7 @@ export default function UploadButton(){
                         <Image style = {styles.tempImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
                     </View>
                     <View style = {styles.tempUploadButtons}>
-                        <TouchableOpacity onPress = { () => { predict() }}>
+                        <TouchableOpacity onPress = { () => { predict(imageB64) }}>
                             <Text style={styles.tempUploadText}>Analyze!</Text>
                         </TouchableOpacity>
                     </View>
