@@ -6,10 +6,13 @@ import {
 } from "react-native";
 
 import { arrowStyles } from "../styles/arrowStyles";
+import { getPerms } from "../backend/getPerms"
+import UploadButton from "../backend/UploadButton";
 
 // let statusBarHeight = 30;
 
 function Test_Interface({ navigation }) {
+  getPerms()  
 
   return (
     <SafeAreaView style={arrowStyles.container}>
@@ -17,7 +20,7 @@ function Test_Interface({ navigation }) {
         source={require("../assets/top-camera.png")} 
       />
       <Text style={arrowStyles.testText}>
-        Test Interface
+        <UploadButton/>
       </Text>
     </SafeAreaView>
   );

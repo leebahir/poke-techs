@@ -8,10 +8,12 @@ import {
 } from "react-native";
 
 import { arrowStyles } from "../styles/arrowStyles";
-
+import { getPerms } from "../backend/getPerms"
 // let statusBarHeight = 30;
 
 function Front_Interface({ navigation }) {
+  getPerms()
+  
   const pressHandler = () => {
     navigation.navigate("Left");
   };
