@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from 'react';
 import {
   Text,
   SafeAreaView,
@@ -11,7 +10,6 @@ import {
 import { arrowStyles } from "../styles/arrowStyles";
 
 // let statusBarHeight = 30;
-
 
 function Front_Interface({ navigation }) {
   const pressHandler = () => {

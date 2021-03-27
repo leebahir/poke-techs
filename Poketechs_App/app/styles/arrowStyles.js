@@ -4,9 +4,6 @@ export const arrowStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#D12712",
-    // paddingTop: statusBarHeight,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   testText: {
     color: "white",
