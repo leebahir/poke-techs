@@ -1,19 +1,14 @@
 import React from "react";
-import {
-  Text,
-  SafeAreaView,
-  View,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Text, SafeAreaView, View, Image, TouchableOpacity } from "react-native";
 
 import { arrowStyles } from "../styles/arrowStyles";
-import { getPerms } from "../backend/getPerms"
-// let statusBarHeight = 30;
+
+import { getPerms } from "../backend/getPerms";
+import UploadButton from "../backend/UploadButton";
 
 function Front_Interface({ navigation }) {
   getPerms()
-  
+
   const pressHandler = () => {
     navigation.navigate("Left");
   };
@@ -25,6 +20,9 @@ function Front_Interface({ navigation }) {
       />
       <Text style={arrowStyles.testText}>
         Front Interface
+      </Text>
+      <Text style={arrowStyles.testText}>
+        <UploadButton/>
       </Text>
       <View style={arrowStyles.arrowOnRight}>
         <TouchableOpacity onPress={pressHandler}>

@@ -3,8 +3,6 @@ import { Text, SafeAreaView, View, Image, TouchableOpacity } from 'react-native'
 
 import { arrowStyles } from "../styles/arrowStyles";
 
-// let statusBarHeight = 30;
-
 function Right_Interface({ navigation }) {
    
   const leftPressHandler = () => {

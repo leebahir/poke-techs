@@ -1,23 +1,15 @@
 import React from "react";
-import {
-  Text,
-  SafeAreaView,
-  View,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Text, SafeAreaView, View, Image, TouchableOpacity, StyleSheet } from "react-native";
 
 import { arrowStyles } from "../styles/arrowStyles";
 
-// let statusBarHeight = 30;
+function Left_Interface({ navigation, route }) {
+  const imageB64 = route.params.img;
 
-function Left_Interface({ navigation }) {
   const frontPressHandler = () => {
-    console.log("test");
     navigation.navigate("Front");
   };
   const rightPressHandler = () => {
-    console.log("test");
     navigation.navigate("Right");
   };
 
@@ -29,6 +21,11 @@ function Left_Interface({ navigation }) {
       <Text style={arrowStyles.testText}>
         Left Interface
       </Text>
+
+      <View style = {styles.tempUploadButtons}>
+        <Image style = {styles.tempImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+      </View>
+
       <View style={arrowStyles.doubleArrowRow}>
         <TouchableOpacity onPress={frontPressHandler}>
           <Image
@@ -43,8 +40,28 @@ function Left_Interface({ navigation }) {
           />
         </TouchableOpacity>
       </View>
+      
     </SafeAreaView>
   );
 }
+
+//TODO: all these styles are temporary
+const styles = StyleSheet.create({
+  tempUploadText:{
+      color: 'black',
+      alignSelf: 'center'
+  },
+  tempUploadButtons:{
+      alignSelf:'center',
+      backgroundColor: 'white',
+      borderColor: 'black',
+      borderWidth: 5,
+      borderRadius: 5
+  },
+  tempImage:{
+      width: 250, 
+      height: 250,
+  },
+})
 
 export default Left_Interface;
