@@ -6,7 +6,7 @@ import {
 } from "react-native";
 
 import { arrowStyles } from "../styles/arrowStyles";
-import { getPerms } from "../backend/getPerms"
+import { getPerms } from "../backend/getPerms";
 import UploadButton from "../backend/UploadButton";
 
 // let statusBarHeight = 30;

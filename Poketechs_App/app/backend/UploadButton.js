@@ -1,17 +1,13 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  View,
-  Image,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
-import { useState } from 'react';import * as ImagePicker from 'expo-image-picker';
-import { predict } from './submit_func'
+import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from "react-native";
 
-export default function UploadButton(){    
+import { useState } from 'react';import * as ImagePicker from 'expo-image-picker';
+import { useNavigation } from '@react-navigation/native';
+
+
+export default function UploadButton(){ 
+    const navigation = useNavigation();
+
     //Creates 3 states/hooks for the element
     //NOTE: imageB64 (should be able to be) used with sending the prediction request
     const [imageURI, setImageURI] = useState(null)
@@ -59,8 +55,9 @@ export default function UploadButton(){
         }
     }
 
-
     if (imageChosen){
+        const img = {img: imageB64};
+        
         //NOTE: I think theres a better way of cascading these styles but it probably doesnt matter because things are gonna move around anyway
         // The main purpose of the code here is proof of concept that uploading images works. The functions and returns can just be moved around as needed
         return (<View>
@@ -76,7 +73,7 @@ export default function UploadButton(){
                         <Image style = {styles.tempImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
                     </View>
                     <View style = {styles.tempUploadButtons}>
-                        <TouchableOpacity onPress = { () => { predict(imageB64) }}>
+                        <TouchableOpacity onPress = { () => { navigation.navigate('Left', img) }}>
                             <Text style={styles.tempUploadText}>Analyze!</Text>
                         </TouchableOpacity>
                     </View>
