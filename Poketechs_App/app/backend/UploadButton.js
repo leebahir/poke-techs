@@ -89,13 +89,16 @@ export default function UploadButton(){
                 </View>
                 )
     }else{
-        return (<View style = {touchableStyles.uploadButton}>  
-                    <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
-                            <Text style={touchableStyles.uploadText}>Upload Image From Camera Roll</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={ () => {takePicture() } }>
-                        <Text style={touchableStyles.uploadText}>Take a Photo and Upload</Text>
-                    </TouchableOpacity>
+        return (
+                <View style = {touchableStyles.uploadContainer}>
+                    <View style = {touchableStyles.uploadButton}>  
+                        <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
+                                <Text style={touchableStyles.uploadText}>Upload Image From Camera Roll</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={ () => {takePicture() } }>
+                            <Text style={touchableStyles.uploadText}>Take a Photo and Upload</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 )
     }
