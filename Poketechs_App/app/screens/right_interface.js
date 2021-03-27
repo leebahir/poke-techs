@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  StyleSheet,
   Text,
   SafeAreaView,
   View,
@@ -14,9 +13,6 @@ let statusBarHeight = 30;
 
 // renders right interface component
 function Right_Interface({ navigation }) {
-  const frontPressHandler = () => {
-    navigation.navigate("Front");
-  };
   const leftPressHandler = () => {
     navigation.navigate("Left");
   };
@@ -33,11 +29,6 @@ function Right_Interface({ navigation }) {
           />
         </TouchableOpacity>
         {/* eventually, we may want a start over / go back to front button */}
-        {/* <TouchableOpacity onPress={frontPressHandler}>
-                    <Image style={styles.rightArrow}
-                        source={require('../assets/temp_right_button.png')}
-                    />
-                </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );

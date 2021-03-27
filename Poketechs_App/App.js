@@ -1,5 +1,4 @@
 import React from "react";
-import Navigator from "./app/navigations/frontStack";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Front_Interface from "./app/screens/front_interface";

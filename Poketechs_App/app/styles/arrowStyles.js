@@ -13,9 +13,13 @@ export const arrowStyles = StyleSheet.create({
     alignSelf: "center",
     padding: 100,
   },
-  arrows: {
-    flex: 1,
-    position: "absolute",
+  arrowOnRight: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  doubleArrows: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   rightArrow: {
     height: 100,
