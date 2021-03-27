@@ -1,12 +1,5 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  View,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import React from 'react';
+import { Text, SafeAreaView, View, Image, TouchableOpacity } from 'react-native';
 
 import { arrowStyles } from "../styles/arrowStyles";
 
