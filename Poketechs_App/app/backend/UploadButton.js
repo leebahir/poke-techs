@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from "react-na
 import { useState } from 'react';import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
+import { touchableStyles } from '../styles/touchableStyles.js'
 
 export default function UploadButton(){ 
     const navigation = useNavigation();
@@ -60,54 +61,45 @@ export default function UploadButton(){
         
         //NOTE: I think theres a better way of cascading these styles but it probably doesnt matter because things are gonna move around anyway
         // The main purpose of the code here is proof of concept that uploading images works. The functions and returns can just be moved around as needed
-        return (<View>
-                    <View style = {styles.tempUploadButtons}>
+        return (<View style = {touchableStyles.uploadContainer}>
+                    <View style = {touchableStyles.uploadButton}>
                         <TouchableOpacity onPress ={ () => {requestFromCameraRoll() } }>
-                            <Text style={styles.tempUploadText}>Upload New Image</Text>
+                            <Text style={touchableStyles.uploadText}>Upload New Image</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={ () => { takePicture() } }>
-                            <Text style={styles.tempUploadText}>Take a Different Photo</Text>
+                            <Text style={touchableStyles.uploadText}>Take a Different Photo</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style = {styles.tempUploadButtons}>
-                        <Image style = {styles.tempImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+                    <View style = {touchableStyles.frontImageContainer}>
+                        <Image style = {touchableStyles.frontImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
                     </View>
-                    <View style = {styles.tempUploadButtons}>
+                    <View style = {touchableStyles.uploadButton}>
                         <TouchableOpacity onPress = { () => { navigation.navigate('Left', img) }}>
-                            <Text style={styles.tempUploadText}>Analyze!</Text>
+                            <Text style={touchableStyles.uploadText}>Analyze!</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={touchableStyles.arrowOnRight}>
+                        <TouchableOpacity onPress={() => { navigation.navigate('Left', img) }}>
+                        <Image
+                            style={touchableStyles.rightArrow}
+                            source={require("../assets/temp_right_button.png")}
+                        />
                         </TouchableOpacity>
                     </View>
                 </View>
                 )
     }else{
-        return (<View style = {styles.tempUploadButtons}>  
-                    <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
-                            <Text style={styles.tempUploadText}>Upload Image From Camera Roll</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={ () => {takePicture() } }>
-                        <Text style={styles.tempUploadText}>Take a Photo and Upload</Text>
-                    </TouchableOpacity>
+        return (
+                <View style = {touchableStyles.uploadContainer}>
+                    <View style = {touchableStyles.uploadButton}>  
+                        <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
+                                <Text style={touchableStyles.uploadText}>Upload Image From Camera Roll</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={ () => {takePicture() } }>
+                            <Text style={touchableStyles.uploadText}>Take a Photo and Upload</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 )
     }
-}
-
-//TODO: all these styles are temporary
-const styles = StyleSheet.create({
-    tempUploadText:{
-        color: 'black',
-        alignSelf: 'center'
-    },
-    tempUploadButtons:{
-        alignSelf:'center',
-        backgroundColor: 'white',
-        borderColor: 'black',
-        borderWidth: 5,
-        borderRadius: 5
-    },
-    tempImage:{
-        width: 250, 
-        height: 250,
-    },
-});
-  
+};

@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, SafeAreaView, View, Image, TouchableOpacity } from "react-native";
 
-import { arrowStyles } from "../styles/arrowStyles";
+// import { touchableStyles } from "../styles/touchableStyles";
+import { stationaryStyles } from "../styles/stationaryStyles";
 
 import { getPerms } from "../backend/getPerms";
 import UploadButton from "../backend/UploadButton";
@@ -9,29 +10,17 @@ import UploadButton from "../backend/UploadButton";
 function Front_Interface({ navigation }) {
   getPerms()
 
-  const pressHandler = () => {
-    navigation.navigate("Left");
-  };
-
   return (
-    <SafeAreaView style={arrowStyles.container}>
+    <SafeAreaView style={stationaryStyles.container}>
       <Image 
         source={require("../assets/top-camera.png")} 
       />
-      <Text style={arrowStyles.testText}>
+      <Text style={stationaryStyles.plainText}>
         Front Interface
       </Text>
-      <Text style={arrowStyles.testText}>
-        <UploadButton/>
-      </Text>
-      <View style={arrowStyles.arrowOnRight}>
-        <TouchableOpacity onPress={pressHandler}>
-          <Image
-            style={arrowStyles.rightArrow}
-            source={require("../assets/temp_right_button.png")}
-          />
-        </TouchableOpacity>
-      </View>
+    
+      <UploadButton/>
+      
     </SafeAreaView>
   );
 }

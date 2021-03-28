@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, SafeAreaView, View, Image, TouchableOpacity, StyleSheet } from "react-native";
 
-import { arrowStyles } from "../styles/arrowStyles";
+import { touchableStyles } from "../styles/touchableStyles";
+import { stationaryStyles } from "../styles/stationaryStyles";
 
 function Left_Interface({ navigation, route }) {
   const imageB64 = route.params.img;
@@ -14,54 +15,36 @@ function Left_Interface({ navigation, route }) {
   };
 
   return (
-    <SafeAreaView style={arrowStyles.container}>
+    <SafeAreaView style={stationaryStyles.container}>
       <Image 
         source={require("../assets/top-camera.png")} 
       />
-      <Text style={arrowStyles.testText}>
+      <Text style={stationaryStyles.plainText}>
         Left Interface
       </Text>
 
-      <View style = {styles.tempUploadButtons}>
-        <Image style = {styles.tempImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+      <View style = {touchableStyles.displayImageContainer}>
+        <View style = {touchableStyles.leftImageContainer}>
+          <Image style = {touchableStyles.leftImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+        </View>
       </View>
-
-      <View style={arrowStyles.doubleArrowRow}>
+      <View style={touchableStyles.doubleArrowRow}>
         <TouchableOpacity onPress={frontPressHandler}>
           <Image
-            style={arrowStyles.leftArrow}
+            style={touchableStyles.leftArrow}
             source={require("../assets/temp_right_button.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={rightPressHandler}>
           <Image
-            style={arrowStyles.rightArrow}
+            style={touchableStyles.rightArrow}
             source={require("../assets/temp_right_button.png")}
           />
         </TouchableOpacity>
       </View>
-      
+
     </SafeAreaView>
   );
 }
-
-//TODO: all these styles are temporary
-const styles = StyleSheet.create({
-  tempUploadText:{
-      color: 'black',
-      alignSelf: 'center'
-  },
-  tempUploadButtons:{
-      alignSelf:'center',
-      backgroundColor: 'white',
-      borderColor: 'black',
-      borderWidth: 5,
-      borderRadius: 5
-  },
-  tempImage:{
-      width: 250, 
-      height: 250,
-  },
-})
 
 export default Left_Interface;
