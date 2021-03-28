@@ -62,7 +62,7 @@ export const touchableStyles = StyleSheet.create({
     frontArrowContainer: {
         // backgroundColor: 'yellow',
         marginTop: 40,
-        marginRight: 10,
+        marginRight: 15,
         alignItems: 'flex-end',
         height: 60,
     },
@@ -111,11 +111,10 @@ export const touchableStyles = StyleSheet.create({
         justifyContent: 'center',
     },
     rightImage: {
-        height: 252,
-        width: 252,
+        height: 265,
+        width: 265,
         alignSelf: 'center',
-        marginTop: 62,
-        marginLeft: 4,
+        marginTop: 60,
     },  
     rightBorder:{
         borderColor: 'white',
@@ -128,58 +127,5 @@ export const touchableStyles = StyleSheet.create({
         height: 340,
         width: 340,
     },
-
-
-// ============= OLD =======================
-
-    // arrowOnRight: {
-    //     justifyContent: "flex-end",
-    //     alignSelf: "flex-end"
-    // },
-    // arrowOnLeft: {
-    //     justifyContent: "flex-start",
-    //     alignSelf: "flex-end"
-    // },
-    // doubleArrowRow: {
-    //     flexDirection: "row",
-    //     justifyContent: "space-between",
-    //     alignItems: 'flex-end'
-    // },
-
-    // parentContainer: {
-    //     alignSelf: 'center',
-    //     flex: 1,
-    //     flexDirection: 'column',
-    //     justifyContent: 'center'
-    // },
-    // test:{
-    //     flex: 1,
-    // },
-    // imageContainer: {
-    //     alignSelf: 'center'
-    // },
-    // textBox: {
-    //     backgroundColor: 'white',
-    //     backfaceVisibility: 'hidden',
-    //     shadowColor: 'white'
-    // },
-    // centralImage: { 
-    //     width: 292, 
-    //     height: 292,
-    // },
-    // plainText:{
-    //     color: 'black',
-    //     fontSize: 20,
-    //     margin: 5
-    // },
-    // displayImageContainer: {
-    //     alignItems: 'center',
-    // },
-   // border:{
-    //     borderColor: 'black',
-    //     borderWidth: 4,
-    //     borderRadius: 5,
-    //     margin: 25,
-    //     backgroundColor: 'white',
-    // },
+    
 });

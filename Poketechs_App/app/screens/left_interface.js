@@ -46,7 +46,7 @@ function Left_Interface({ navigation, route }) {
   return (
     <SafeAreaView style={stationaryStyles.container}>
      
-      <ImageBackground style={stationaryStyles.container} source={require("../assets/front-background.png")}>
+      <ImageBackground style={stationaryStyles.container} source={require("../assets/left-background.png")}>
         
         <View style = {touchableStyles.pageContainer}>
 

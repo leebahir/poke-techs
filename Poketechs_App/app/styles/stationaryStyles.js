@@ -4,7 +4,7 @@ export const stationaryStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#D12712",
-    // backgroundColor: 'white',
+    // backgroundColor: 'slategrey',
     justifyContent: 'center',
   },
 });
