@@ -5,6 +5,8 @@ Hello!
 
 We wanted to build a project to learn more about machine learning and app development. It was intimidating without prior experience, but in the end we successfully trained a model that classifies what animal is present in a picture, and built an app around it inspired by a Pokédex.
 
+* note: the model used to classify images for the app requires authentification and requires being deployed, so you won't be able to try it currently! *
+
 <div>
   <img src="https://user-images.githubusercontent.com/60532189/112748634-dc000f80-8f71-11eb-8d65-0539dc2f3e05.PNG" width="225" height="450">
   <img src="https://user-images.githubusercontent.com/60532189/112748793-15854a80-8f73-11eb-9fed-8540600297bb.PNG" width="225" height="450">
