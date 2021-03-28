@@ -10,14 +10,13 @@ import UploadButton from "../backend/UploadButton";
 function Front_Interface({ navigation }) {
   getPerms()
 
-  //needs a right arrow
   return (
     <SafeAreaView style={stationaryStyles.container}>
       <Image 
         source={require("../assets/top-camera.png")} 
       />
 
-      <UploadButton/>
+      <UploadButton/> 
       
     </SafeAreaView>
   );

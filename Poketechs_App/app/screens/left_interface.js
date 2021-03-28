@@ -6,6 +6,8 @@ import { stationaryStyles } from "../styles/stationaryStyles";
 
 function Left_Interface({ navigation, route }) {
   const imageB64 = route.params.img;
+  const json = route.params.json; 
+  console.log('JSON: ' + JSON.stringify(json));
 
   const frontPressHandler = () => {
     navigation.navigate("Front");
