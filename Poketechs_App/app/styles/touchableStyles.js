@@ -13,7 +13,8 @@ export const touchableStyles = StyleSheet.create({
     },
     arrowOnRight: {
         flexDirection: "row",
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
+        alignItems: "flex-end"
     },
     arrowOnLeft: {
         flexDirection: "row",
@@ -21,7 +22,7 @@ export const touchableStyles = StyleSheet.create({
     },
     doubleArrowRow: {
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
     },
 
     // IMAGE UPLOAD STYLE    
