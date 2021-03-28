@@ -1,30 +1,31 @@
 import { StyleSheet } from "react-native";
-import { BorderlessButton } from "react-native-gesture-handler";
+// import { BorderlessButton } from "react-native-gesture-handler";
 
 export const touchableStyles = StyleSheet.create({
     // NAVIGATION ARROWS
     rightArrow: {
-        height: 100,
-        width: 100,
+        height: 60,
+        width: 60,
         transform: [{ scaleX: -1 }],
     },
     leftArrow: {
-        height: 100,
-        width: 100,
+        height: 60,
+        width: 60,
     },
     arrowOnRight: {
-        flexDirection: "row",
+        flex: 1,
         justifyContent: "flex-end",
         alignSelf: "flex-end"
     },
     arrowOnLeft: {
-        flexDirection: "row",
+        flex: 1,
         justifyContent: "flex-start",
-        alignSelf: "flex-start"
+        alignSelf: "flex-end"
     },
     doubleArrowRow: {
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        alignItems: 'flex-end'
     },
 
     // MAIN INTERFACE STYLING
@@ -36,14 +37,16 @@ export const touchableStyles = StyleSheet.create({
         backgroundColor: 'white',
     },
     parentContainer: {
-        flex: 1,
+        flex:1,
+        flexDirection: 'column',
+        justifyContent: 'space-between'
     },
     imageContainer: {
-        width: 300,
-        height: 300,
+        flex: 3,
         alignSelf: 'center'
     },
     textBox: {
+        flex: 1,
         backgroundColor: 'white',
         backfaceVisibility: 'hidden',
         shadowColor: 'white'
