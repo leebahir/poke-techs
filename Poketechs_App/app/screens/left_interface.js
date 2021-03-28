@@ -6,42 +6,68 @@ import { stationaryStyles } from "../styles/stationaryStyles";
 
 function Left_Interface({ navigation, route }) {
   const imageB64 = route.params.img;
-  const json = route.params.json;
-  console.log('JSON: ' + JSON.stringify(json));
+    const json = route.params.json;
+    console.log('JSON: ' + JSON.stringify(json));
+    var payload = json.payload;
+    if (payload) {
+        payload.sort((a, b) => (a.classification.score < b.classification.score) ? 1 : ((b.classification.score < a.classification.score) ? -1 : 0));
+    }
+    var selection = 1;
 
-  const jsonDisplay = (json) => {
+  const jsonDisplay = (boxNum) => {
       if (json.payload) {
-          var displayTxt = "";
-          var payload = json.payload;
-          console.log("BEFORE: " + JSON.stringify(payload));
-          payload.sort((a, b) => (a.classification.score < b.classification.score) ? 1 : ((b.classification.score < a.classification.score) ? -1 : 0))
-          console.log("AFTER: "+JSON.stringify(payload));
-          for (i = 0; i < 3 && i < payload.length; i++) {
-              displayTxt += "Name: " + JSON.stringify(payload[i].displayName) +
-                  "\nScore: " + JSON.stringify(payload[i].classification.score) + '\n';
+          if (boxNum <= payload.length) {
+              return (boxNum + ". " +
+                  (payload[boxNum - 1].displayName + "                              ").slice(0,30) +
+                  JSON.stringify(payload[boxNum - 1].classification.score).slice(2,4) + "%");
           }
-          return (displayTxt);
-      } else if (json.error) {
-          if (JSON.stringify(json.error.message).length > 50) {
-              return ("Error code: " + JSON.stringify(json.error.code) +
-                  "\nMessage: " + JSON.stringify(json.error.message).substring(0, 50) + "...\""
-              );
+      } else { //no predictions
+          if (json.error) {
+              if (boxNum == 1) {
+                  return ("Error code: " + JSON.stringify(json.error.code));
+              } else if (boxNum == 2) {
+                  if (JSON.stringify(json.error.message).length > 50) {
+                      return ("Message: " + JSON.stringify(json.error.message).substring(0, 50) + "...\"");
+                  } else {
+                      return ("Message: " + JSON.stringify(json.error.message));
+                  }
+             }
           } else {
-              return ("Error code: " + JSON.stringify(json.error.code) +
-                  "\nMessage: " + JSON.stringify(json.error.message)
-              );
+              if (boxNum == 1) {
+                  return ("Sorry, we found no results for that.");
+              } else if (boxNum == 2) {
+                  return ("         Try a different image?");
+              }
           }
-      } else {
-          return ("Sorry, we found no results for that. Try a different image? ");
+          
       }
-  }
+    }
+
+    const namePasser = (boxNum) => {
+        if (payload && boxNum <= payload.length) {
+            return (payload[boxNum - 1].displayName);
+        } else { //no predictions
+            return ("Please select a different name or image");
+        }
+    }
 
   const frontPressHandler = () => {
     navigation.navigate("Front");
   };
   const rightPressHandler = () => {
-    navigation.navigate("Right", {img: imageB64});
-  };
+      console.log("FINAL SELECTION: "+selection);
+      var name = namePasser(selection);
+    navigation.navigate("Right", {img: imageB64, name: name});
+    };
+
+    const selectBox = (boxNum) => {
+        console.log("Pressed Button #" + boxNum);
+        let name = namePasser(boxNum);
+        if (name != "Please select a different name or image") {
+            Alert.alert("You chose: "+ name);
+            selection = boxNum;
+        }   
+    }
 
   return (
     <SafeAreaView style={stationaryStyles.container}>
@@ -56,26 +82,18 @@ function Left_Interface({ navigation, route }) {
                   <Image style = { [touchableStyles.image, touchableStyles.border] } source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
               </View>
 
-              {/* <View style = {[touchableStyles.optionsContainer, touchableStyles.border]}>
+              { <View style = {[touchableStyles.optionsContainer, touchableStyles.border]}>
                   <Text style = {touchableStyles.optionsTitle}>Tap the Best Match: </Text>
-                  <TouchableOpacity onPress={ () => Alert.alert('youre 100% that bitch') }>
-                      <Text style={[touchableStyles.optionsText, touchableStyles.selectedOption]}>  1. That Bitch    100%</Text>
+                          <TouchableOpacity onPress={() => selectBox(1) }>
+                              <Text style={[touchableStyles.optionsText, touchableStyles.selectedOption]}> { jsonDisplay(1) } </Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={ () => Alert.alert('rhino king') }>
-                      <Text style={touchableStyles.optionsText}>  2. Rhino            90% </Text>
+                          <TouchableOpacity onPress={() => selectBox(2) }>
+                              <Text style={touchableStyles.optionsText}>  {jsonDisplay(2)} </Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={ () => Alert.alert('pee pee') }>
-                      <Text style={touchableStyles.optionsText}>  3. poo poo          60% </Text>
+                          <TouchableOpacity onPress={() => selectBox(3) }>
+                              <Text style={touchableStyles.optionsText}>  {jsonDisplay(3)}  </Text>
                   </TouchableOpacity>
-              </View> */}
-
-              <View style={[touchableStyles.optionsContainer, touchableStyles.border]}>
-                <View style={touchableStyles.optionsTitle}>
-                    <TouchableOpacity onPress={() => { Alert.alert("uwu") }}>
-                        <Text style={touchableStyles.plainText}>{ jsonDisplay(json)  }</Text>
-                    </TouchableOpacity>
-                </View>
-              </View>
+              </View> }
 
           </View>
 
