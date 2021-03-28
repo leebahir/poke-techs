@@ -6,6 +6,35 @@ import { stationaryStyles } from "../styles/stationaryStyles";
 
 function Left_Interface({ navigation, route }) {
   const imageB64 = route.params.img;
+  const json = route.params.json;
+  console.log('JSON: ' + JSON.stringify(json));
+
+  const jsonDisplay = (json) => {
+      if (json.payload) {
+          var displayTxt = "";
+          var payload = json.payload;
+          console.log("BEFORE: " + JSON.stringify(payload));
+          payload.sort((a, b) => (a.classification.score < b.classification.score) ? 1 : ((b.classification.score < a.classification.score) ? -1 : 0))
+          console.log("AFTER: "+JSON.stringify(payload));
+          for (i = 0; i < 3 && i < payload.length; i++) {
+              displayTxt += "Name: " + JSON.stringify(payload[i].displayName) +
+                  "\nScore: " + JSON.stringify(payload[i].classification.score) + '\n';
+          }
+          return (displayTxt);
+      } else if (json.error) {
+          if (JSON.stringify(json.error.message).length > 50) {
+              return ("Error code: " + JSON.stringify(json.error.code) +
+                  "\nMessage: " + JSON.stringify(json.error.message).substring(0, 50) + "...\""
+              );
+          } else {
+              return ("Error code: " + JSON.stringify(json.error.code) +
+                  "\nMessage: " + JSON.stringify(json.error.message)
+              );
+          }
+      } else {
+          return ("Sorry, we found no results for that. Try a different image? ");
+      }
+  }
 
   const frontPressHandler = () => {
     navigation.navigate("Front");
@@ -27,7 +56,7 @@ function Left_Interface({ navigation, route }) {
                   <Image style = { [touchableStyles.image, touchableStyles.border] } source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
               </View>
 
-              <View style = {[touchableStyles.optionsContainer, touchableStyles.border]}>
+              {/* <View style = {[touchableStyles.optionsContainer, touchableStyles.border]}>
                   <Text style = {touchableStyles.optionsTitle}>Tap the Best Match: </Text>
                   <TouchableOpacity onPress={ () => Alert.alert('youre 100% that bitch') }>
                       <Text style={[touchableStyles.optionsText, touchableStyles.selectedOption]}>  1. That Bitch    100%</Text>
@@ -38,6 +67,14 @@ function Left_Interface({ navigation, route }) {
                   <TouchableOpacity onPress={ () => Alert.alert('pee pee') }>
                       <Text style={touchableStyles.optionsText}>  3. poo poo          60% </Text>
                   </TouchableOpacity>
+              </View> */}
+
+              <View style={[touchableStyles.optionsContainer, touchableStyles.border]}>
+                <View style={touchableStyles.optionsTitle}>
+                    <TouchableOpacity onPress={() => { Alert.alert("uwu") }}>
+                        <Text style={touchableStyles.plainText}>{ jsonDisplay(json)  }</Text>
+                    </TouchableOpacity>
+                </View>
               </View>
 
           </View>
@@ -60,7 +97,6 @@ function Left_Interface({ navigation, route }) {
         </View>
 
       </ImageBackground>
-
     </SafeAreaView>
   );
 }

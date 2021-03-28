@@ -3,6 +3,7 @@ import { Text, View, Image, Alert, TouchableOpacity } from "react-native";
 
 import { useState } from 'react'; import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
+import { predict } from '../backend/submit_func';
 
 import { touchableStyles } from '../styles/touchableStyles.js'
 
@@ -59,11 +60,19 @@ export default function UploadButton() {
     }
 
     if (imageChosen){
-        const img = {img: imageB64};
-        
+        const predictAndNavigate = async (imgB64) => {
+            const img = { img: imgB64 };
+            const responseJson = await predict(imgB64);
+            console.log('PREDICTION1: ' + JSON.stringify(img.json));
+            img.json = responseJson;
+            console.log('PREDICTION2: ' + JSON.stringify(img.json));
+            navigation.navigate('Left', img);
+        }
            return (
                 <View style = {touchableStyles.pageContainer}>
+
                     <View style = {touchableStyles.contentContainer}>
+                        
                         <View style = {touchableStyles.frontImageContainer}>
                             <Image style = { [touchableStyles.image, touchableStyles.border] } source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
                         </View>
@@ -76,21 +85,26 @@ export default function UploadButton() {
                                 <Text style={touchableStyles.uploadText}>▶ Take a Different Photo</Text>
                             </TouchableOpacity>
                         </View>
+
                     </View>
+
                     <View style = {touchableStyles.frontArrowContainer}>
-                        <TouchableOpacity onPress={() => { navigation.navigate('Left', img) }}>
+                        <TouchableOpacity onPress={() => { predictAndNavigate(imageB64) }}>
                             <Image
                                 style={touchableStyles.rightArrow}
                                 source={require("../assets/temp_right_button.png")}
                             />
                         </TouchableOpacity>
                     </View>
+
                 </View>
                 )
     }else{
         return (
                 <View style = {touchableStyles.pageContainer}>
+
                     <View style = {touchableStyles.contentContainer}>
+
                         <View style = {touchableStyles.frontImageContainer}>
                             <Image style = {[touchableStyles.image, touchableStyles.border]} source = { require("../assets/starting-image.png") }/>
                         </View>
@@ -103,9 +117,13 @@ export default function UploadButton() {
                                 <Text style={touchableStyles.uploadText}>▶ Take a Photo and Upload</Text>
                             </TouchableOpacity>
                         </View>
+
                     </View>
 
-                    <View style = {touchableStyles.frontArrowContainer}> {/* this is a spacing placeholder, don't remove */} </View>
+                    <View style = {touchableStyles.frontArrowContainer}> 
+                    {/* this is a spacing placeholder, don't remove */} 
+                    </View>
+                    
                 </View>
         )
     }

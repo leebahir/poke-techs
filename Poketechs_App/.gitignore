@@ -8,7 +8,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 backend.
-./app/backend/*environment.js
+app/backend/dummy_environment.js
 web-build/
 
 # macOS
