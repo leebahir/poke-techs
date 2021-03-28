@@ -70,11 +70,11 @@ export default function UploadButton() {
                     </View>
                     <View style = { [touchableStyles.textBox, touchableStyles.border] }>
                         <TouchableOpacity onPress ={ () => {requestFromCameraRoll() } }>
-                            <Text style={touchableStyles.plainText}>Upload New Image</Text>
+                            <Text style={touchableStyles.plainText}>▶ Upload New Image</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={ () => { takePicture() } }>
-                            <Text style={touchableStyles.plainText}>Take a Different Photo</Text>
+                            <Text style={touchableStyles.plainText}>▶ Take a Different Photo</Text>
                         </TouchableOpacity>
                     </View> 
 
@@ -92,13 +92,15 @@ export default function UploadButton() {
         //TODO: This will probably be changed later
         return (
                 <View style = { [touchableStyles.parentContainer] }>
-                    <View style = { [ touchableStyles.border, touchableStyles.imageContainer] }/>
+                    <View style = { [touchableStyles.imageContainer, touchableStyles.border] }>
+                        <Image style = {touchableStyles.centralImage} source = { require("../assets/starting-image.png") }/>
+                    </View>
                     <View style = { [ touchableStyles.border, touchableStyles.textBox] }>  
                         <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
-                                <Text style={touchableStyles.plainText}>Upload Image From Camera Roll</Text>
+                                <Text style={touchableStyles.plainText}>▶ Upload Image From Camera Roll</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={ () => {takePicture() } }>
-                            <Text style={touchableStyles.plainText}>Take a Photo and Upload</Text>
+                            <Text style={touchableStyles.plainText}>▶ Take a Photo and Upload</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
