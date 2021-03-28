@@ -5,9 +5,11 @@ Hello!
 
 We wanted to build a project to learn more about machine learning and app development. It was intimidating without prior experience, but in the end we successfully trained a model that classifies what animal is present in a picture, and built an app around it inspired by a Pokédex.
 
-![IMG_4910](https://user-images.githubusercontent.com/60532189/112748634-dc000f80-8f71-11eb-8d65-0539dc2f3e05.PNG)
-![IMG_4911](https://user-images.githubusercontent.com/60532189/112748637-e3271d80-8f71-11eb-8992-1a6d90049445.PNG)
-![IMG_4912](https://user-images.githubusercontent.com/60532189/112748641-e5897780-8f71-11eb-9653-71a8124f82b9.PNG)
+<div>
+  <img src="https://user-images.githubusercontent.com/60532189/112748634-dc000f80-8f71-11eb-8d65-0539dc2f3e05.PNG" width="225" height="450">
+  <img src="https://user-images.githubusercontent.com/60532189/112748634-dc000f80-8f71-11eb-8d65-0539dc2f3e05.PNG" width="225" height="450">
+  <img src="https://user-images.githubusercontent.com/60532189/112748641-e5897780-8f71-11eb-9653-71a8124f82b9.PNG" width="225" height="450">
+</div>
 
 # Inspiration
 - Pokémon
