@@ -8,6 +8,6 @@ export const stationaryStyles = StyleSheet.create({
   plainText: {
     color: "white",
     alignSelf: "center",
-    padding: 100,
+    padding: 10,
   },
 });

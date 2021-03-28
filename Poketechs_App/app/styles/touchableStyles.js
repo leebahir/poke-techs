@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { BorderlessButton } from "react-native-gesture-handler";
 
 export const touchableStyles = StyleSheet.create({
     // NAVIGATION ARROWS
@@ -14,55 +15,49 @@ export const touchableStyles = StyleSheet.create({
     arrowOnRight: {
         flexDirection: "row",
         justifyContent: "flex-end",
-        alignItems: "flex-end"
+        alignSelf: "flex-end"
     },
     arrowOnLeft: {
         flexDirection: "row",
-        justifyContent: "flex-start"
+        justifyContent: "flex-start",
+        alignSelf: "flex-start"
     },
     doubleArrowRow: {
         flexDirection: "row",
         justifyContent: "space-between",
     },
 
-    // IMAGE UPLOAD STYLE    
-    uploadContainer: {
-        alignItems: 'center',
-    },
-    uploadButton:{
-        backgroundColor: 'white',
+    // MAIN INTERFACE STYLING
+    border:{
         borderColor: 'black',
-        borderWidth: 5,
+        borderWidth: 4,
         borderRadius: 5,
-        alignItems: 'center',
+        margin: 25,
+        backgroundColor: 'white',
     },
-    uploadText:{
+    parentContainer: {
+        flex: 1,
+    },
+    imageContainer: {
+        width: 300,
+        height: 300,
+        alignSelf: 'center'
+    },
+    textBox: {
+        backgroundColor: 'white',
+        backfaceVisibility: 'hidden',
+        shadowColor: 'white'
+    },
+    centralImage: { 
+        width: 292, 
+        height: 292,
+    },
+    plainText:{
         color: 'black',
         fontSize: 20,
+        margin: 5
     },
-    
-    frontImage: {
-        width: 250, 
-        height: 250,
-    },
-    frontImageContainer: {
-        alignItems: 'center',
-        borderColor: 'black',
-        borderWidth: 5,
-        borderRadius: 5,
-    },
-
     displayImageContainer: {
         alignItems: 'center',
-    },
-    leftImage: {
-        width: 250, 
-        height: 250,
-    },
-    leftImageContainer: {
-        alignItems: 'center',
-        borderColor: 'black',
-        borderWidth: 5,
-        borderRadius: 5,
     },
 });
