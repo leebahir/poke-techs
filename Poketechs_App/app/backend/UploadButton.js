@@ -64,9 +64,10 @@ export default function UploadButton() {
     if (imageChosen){
         const img = {img: imageB64};
         
-           return (<View style = {touchableStyles.parentContainer}>
-                    <View style = { [touchableStyles.imageContainer, touchableStyles.border] }>
-                        <Image style = {touchableStyles.centralImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+           return (
+                <View style = {touchableStyles.parentContainer}>
+                    <View style = { [touchableStyles.imageContainer] }>
+                        <Image style = { [touchableStyles.centralImage, touchableStyles.border] } source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
                     </View>
                     <View style = { [touchableStyles.textBox, touchableStyles.border] }>
                         <TouchableOpacity onPress ={ () => {requestFromCameraRoll() } }>
