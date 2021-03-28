@@ -5,6 +5,7 @@ import { useState } from 'react'; import * as ImagePicker from 'expo-image-picke
 import { useNavigation } from '@react-navigation/native';
 
 import { touchableStyles } from '../styles/touchableStyles.js'
+import { stationaryStyles } from "../styles/stationaryStyles.js";
 
 import { predict } from '../backend/submit_func';
 
@@ -60,6 +61,7 @@ export default function UploadButton() {
         }
     }
 
+<<<<<<< HEAD
     if (imageChosen) {
         const img = { img: imageB64 };
 
@@ -109,8 +111,55 @@ export default function UploadButton() {
                     <TouchableOpacity onPress={() => { takePicture() }}>
                         <Text style={touchableStyles.uploadText}>Take a Photo and Upload</Text>
                     </TouchableOpacity>
+=======
+    if (imageChosen){
+        const img = {img: imageB64};
+        
+           return (<View style = {touchableStyles.parentContainer}>
+                    <View style = { [touchableStyles.imageContainer, touchableStyles.border] }>
+                        <Image style = {touchableStyles.centralImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+                    </View>
+                    <View style = { [touchableStyles.textBox, touchableStyles.border] }>
+                        <TouchableOpacity onPress ={ () => {requestFromCameraRoll() } }>
+                            <Text style={touchableStyles.plainText}>Upload New Image</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={ () => { takePicture() } }>
+                            <Text style={touchableStyles.plainText}>Take a Different Photo</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress = { () => { navigation.navigate('Left', img) }}>
+                            <Text style={touchableStyles.plainText}>Analyze!</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+                    <View style={touchableStyles.arrowOnRight}>
+                        <TouchableOpacity onPress={() => { navigation.navigate('Left', img) }}>
+                            <Image
+                                style={touchableStyles.rightArrow}
+                                source={require("../assets/temp_right_button.png")}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                )
+    }else{
+        //TODO: This will probably be changed later
+        return (
+                <View style = { [touchableStyles.parentContainer] }>
+                    <View style = { [ touchableStyles.border, touchableStyles.imageContainer] }/>
+                    <View style = { [ touchableStyles.border, touchableStyles.textBox] }>  
+                        <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
+                                <Text style={touchableStyles.plainText}>Upload Image From Camera Roll</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={ () => {takePicture() } }>
+                            <Text style={touchableStyles.plainText}>Take a Photo and Upload</Text>
+                        </TouchableOpacity>
+                        <Text style={ [touchableStyles.plainText, { color:'gray' } ] }>Analyze!</Text> 
+                    </View>
+>>>>>>> ce91cad59003018fbc242b481a73a5571afe6e13
                 </View>
             </View>
         )
     }
-};
+};/**/
