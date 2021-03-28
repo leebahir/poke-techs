@@ -18,7 +18,9 @@ function Left_Interface({ navigation, route }) {
       if (json.payload) {
           if (boxNum <= payload.length) {
               return (boxNum + ". " +
-                  (payload[boxNum - 1].displayName + "                              ").slice(0,30) +
+                  // String(payload[boxNum - 1].displayName + "                                               ").slice(0,30) +
+                  // JSON.stringify(payload[boxNum - 1].classification.score).slice(2,4) + "%");
+                  payload[boxNum - 1].displayName + "  -  " +
                   JSON.stringify(payload[boxNum - 1].classification.score).slice(2,4) + "%");
           }
       } else { //no predictions
@@ -84,15 +86,15 @@ function Left_Interface({ navigation, route }) {
 
               { <View style = {[touchableStyles.optionsContainer, touchableStyles.border]}>
                   <Text style = {touchableStyles.optionsTitle}>Tap the Best Match: </Text>
-                          <TouchableOpacity onPress={() => selectBox(1) }>
-                              <Text style={[touchableStyles.optionsText, touchableStyles.selectedOption]}> { jsonDisplay(1) } </Text>
-                  </TouchableOpacity>
-                          <TouchableOpacity onPress={() => selectBox(2) }>
-                              <Text style={touchableStyles.optionsText}>  {jsonDisplay(2)} </Text>
-                  </TouchableOpacity>
-                          <TouchableOpacity onPress={() => selectBox(3) }>
-                              <Text style={touchableStyles.optionsText}>  {jsonDisplay(3)}  </Text>
-                  </TouchableOpacity>
+                    <TouchableOpacity onPress={() => selectBox(1) }>
+                          <Text style={[touchableStyles.optionsText, touchableStyles.selectedOption]}> { jsonDisplay(1) } </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => selectBox(2) }>
+                          <Text style={touchableStyles.optionsText}> {jsonDisplay(2)} </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => selectBox(3) }>
+                          <Text style={touchableStyles.optionsText}> {jsonDisplay(3)}  </Text>
+                    </TouchableOpacity>
               </View> }
 
           </View>

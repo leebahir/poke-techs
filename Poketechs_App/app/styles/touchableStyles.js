@@ -104,17 +104,34 @@ export const touchableStyles = StyleSheet.create({
 
     // RIGHT INTERFACE STYLING
     resultsContainer: {
-        backgroundColor: 'white',
+        backgroundColor: '#FFF275',
         height: 180,
         width: 270,
         marginTop: 20,
         justifyContent: 'center',
     },
+    resultsTitle: {
+        color: 'black',
+        fontSize: 20,
+        alignSelf: 'center',
+    },
+    resultsText:{
+        color: 'black',
+        fontSize: 15,
+        paddingLeft: 8,
+        alignSelf: 'flex-start',
+    },
+    padBottom:{
+        paddingBottom:10,
+    },
+    padBottomLess:{
+        paddingBottom:5,
+    },
     rightImage: {
         height: 265,
         width: 265,
         alignSelf: 'center',
-        marginTop: 60,
+        marginTop: 59,
     },  
     rightBorder:{
         borderColor: 'white',
@@ -127,5 +144,5 @@ export const touchableStyles = StyleSheet.create({
         height: 340,
         width: 340,
     },
-    
+
 });

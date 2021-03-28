@@ -15,7 +15,7 @@ function Right_Interface({ navigation, route }) {
     return (
     <SafeAreaView style={stationaryStyles.container}> 
         
-        <ImageBackground style={stationaryStyles.container} source={require("../assets/right-background.png")}>
+        <ImageBackground style={stationaryStyles.container} source={require("../assets/right-background-plant.png")}>
         
             <View style = {touchableStyles.pageContainer}>
 
@@ -25,9 +25,11 @@ function Right_Interface({ navigation, route }) {
                         <Image style = { [touchableStyles.rightImage, touchableStyles.rightBorder] } source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
                     </View>
 
-                        <View style={[touchableStyles.resultsContainer, touchableStyles.rightBorder]}>
-                            <Text> { txt } </Text>
-                            <Text> All Hail Meureum</Text>
+                    <View style={[touchableStyles.resultsContainer, touchableStyles.rightBorder]}>
+                        <Text style={touchableStyles.resultsTitle}> { "You've Captured"} </Text>
+                        <Text style={[touchableStyles.resultsTitle, touchableStyles.padBottom]}> { "a " + txt.toUpperCase() + '!'} </Text>
+                        <Text style={[touchableStyles.resultsText, touchableStyles.padBottomLess]}>{txt + "s are so cool! Congratulations on catching one :)"} </Text>
+                        <Text style={touchableStyles.resultsText}>{"To scan more animals, navigate \nback to the front screen with the arrows!"} </Text>
                     </View>
 
                 </View>
@@ -41,7 +43,7 @@ function Right_Interface({ navigation, route }) {
                     </TouchableOpacity>
                     
                 </View>
-                
+
             </View>
 
       </ImageBackground>
