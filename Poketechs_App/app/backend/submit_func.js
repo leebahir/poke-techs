@@ -27,7 +27,6 @@ export async function predict(content){
 		);
 
 		const responseJson = await response.json();
-		console.log('RESPONSE: ' + JSON.stringify(responseJson));
 		return (responseJson);
 	} catch (error) {
 		console.log(error);

@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import { touchableStyles } from '../styles/touchableStyles.js'
 
+import { predict } from '../backend/submit_func';
+
 export default function UploadButton() {
     const navigation = useNavigation();
 
@@ -61,6 +63,13 @@ export default function UploadButton() {
     if (imageChosen) {
         const img = { img: imageB64 };
 
+        const predictAndNavigate = async (imgB64) => {
+            const responseJson = await predict(imgB64);
+            img.json = responseJson;
+            //console.log('PREDICTION1: ' + JSON.stringify(img.json));
+            navigation.navigate('Left', img);
+        }
+
         //NOTE: I think theres a better way of cascading these styles but it probably doesnt matter because things are gonna move around anyway
         // The main purpose of the code here is proof of concept that uploading images works. The functions and returns can just be moved around as needed
         return (<View style={touchableStyles.uploadContainer}>
@@ -76,7 +85,7 @@ export default function UploadButton() {
                 <Image style={touchableStyles.frontImage} source={{ uri: 'data:image/jpeg;base64,' + imageB64 }} />
             </View>
             <View style={touchableStyles.uploadButton}>
-                <TouchableOpacity onPress={() => { navigation.navigate('Left', img) }}>
+                <TouchableOpacity onPress={() => { predictAndNavigate(imageB64) }}>
                     <Text style={touchableStyles.uploadText}>Analyze!</Text>
                 </TouchableOpacity>
             </View>

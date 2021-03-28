@@ -5,7 +5,9 @@ import { touchableStyles } from "../styles/touchableStyles";
 import { stationaryStyles } from "../styles/stationaryStyles";
 
 function Left_Interface({ navigation, route }) {
-  const imageB64 = route.params.img;
+    const imageB64 = route.params.img;
+    const json = route.params.json; 
+    console.log('JSON: ' + JSON.stringify(json));
 
   const frontPressHandler = () => {
     navigation.navigate("Front");
@@ -19,15 +21,22 @@ function Left_Interface({ navigation, route }) {
       <Image 
         source={require("../assets/top-camera.png")} 
       />
-      <Text style={stationaryStyles.plainText}>
-        Left Interface
-      </Text>
+          {/*<Text style={stationaryStyles.plainText}>
+              Left Interface
+      </Text>*/}
 
       <View style = {touchableStyles.displayImageContainer}>
         <View style = {touchableStyles.leftImageContainer}>
           <Image style = {touchableStyles.leftImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
         </View>
       </View>
+          <View style={touchableStyles.uploadContainer}>
+              <View style={touchableStyles.uploadButton}>
+                  <TouchableOpacity onPress={() => {  }}>
+                      <Text style={touchableStyles.uploadText}>{JSON.stringify(json.error.code) }</Text>
+                  </TouchableOpacity>
+              </View>
+          </View>
       <View style={touchableStyles.doubleArrowRow}>
         <TouchableOpacity onPress={frontPressHandler}>
           <Image
