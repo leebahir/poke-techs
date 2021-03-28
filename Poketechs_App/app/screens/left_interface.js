@@ -1,48 +1,48 @@
 import React from "react";
-import {
-  Text,
-  SafeAreaView,
-  View,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Text, SafeAreaView, View, Image, TouchableOpacity, StyleSheet } from "react-native";
 
-import { arrowStyles } from "../styles/arrowStyles";
+import { touchableStyles } from "../styles/touchableStyles";
+import { stationaryStyles } from "../styles/stationaryStyles";
 
-// let statusBarHeight = 30;
+function Left_Interface({ navigation, route }) {
+  const imageB64 = route.params.img;
 
-function Left_Interface({ navigation }) {
   const frontPressHandler = () => {
-    console.log("test");
     navigation.navigate("Front");
   };
   const rightPressHandler = () => {
-    console.log("test");
     navigation.navigate("Right");
   };
 
   return (
-    <SafeAreaView style={arrowStyles.container}>
+    <SafeAreaView style={stationaryStyles.container}>
       <Image 
         source={require("../assets/top-camera.png")} 
       />
-      <Text style={arrowStyles.testText}>
+      <Text style={stationaryStyles.plainText}>
         Left Interface
       </Text>
-      <View style={arrowStyles.doubleArrowRow}>
+
+      <View style = {touchableStyles.displayImageContainer}>
+        <View style = {touchableStyles.leftImageContainer}>
+          <Image style = {touchableStyles.leftImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+        </View>
+      </View>
+      <View style={touchableStyles.doubleArrowRow}>
         <TouchableOpacity onPress={frontPressHandler}>
           <Image
-            style={arrowStyles.leftArrow}
+            style={touchableStyles.leftArrow}
             source={require("../assets/temp_right_button.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={rightPressHandler}>
           <Image
-            style={arrowStyles.rightArrow}
+            style={touchableStyles.rightArrow}
             source={require("../assets/temp_right_button.png")}
           />
         </TouchableOpacity>
       </View>
+
     </SafeAreaView>
   );
 }

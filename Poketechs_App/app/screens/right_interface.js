@@ -1,9 +1,8 @@
 import React from 'react';
 import { Text, SafeAreaView, View, Image, TouchableOpacity } from 'react-native';
 
-import { arrowStyles } from "../styles/arrowStyles";
-
-// let statusBarHeight = 30;
+import { touchableStyles } from "../styles/touchableStyles";
+import { stationaryStyles } from "../styles/stationaryStyles";
 
 function Right_Interface({ navigation }) {
    
@@ -12,17 +11,17 @@ function Right_Interface({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={arrowStyles.container}>
+    <SafeAreaView style={stationaryStyles.container}>
       <Image source={require("../assets/top-camera.png")} />
-      <Text style={arrowStyles.testText}>Right Interface</Text>
-      <View style={arrowStyles.arrowOnLeft}>
+      <Text style={stationaryStyles.plainText}>Right Interface</Text>
+      <View style={touchableStyles.arrowOnLeft}>
         <TouchableOpacity onPress={leftPressHandler}>
           <Image
-            style={arrowStyles.leftArrow}
+            style={touchableStyles.leftArrow}
             source={require("../assets/temp_right_button.png")}
           />
         </TouchableOpacity>
-        {/* eventually, we may want a start over / go back to front button */}
+        {/* eventually, we will want a start over / go back to front button */}
       </View>
     </SafeAreaView>
   );
