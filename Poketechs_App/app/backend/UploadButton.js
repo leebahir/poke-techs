@@ -1,13 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from "react-native";
+import { Text, View, Image, Alert, TouchableOpacity } from "react-native";
 
 import { useState } from 'react'; import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
 import { touchableStyles } from '../styles/touchableStyles.js'
-import { stationaryStyles } from "../styles/stationaryStyles.js";
-
-import { predict } from '../backend/submit_func';
 
 export default function UploadButton() {
     const navigation = useNavigation();
@@ -65,21 +62,22 @@ export default function UploadButton() {
         const img = {img: imageB64};
         
            return (
-                <View style = {touchableStyles.parentContainer}>
-                    <View style = { [touchableStyles.imageContainer] }>
-                        <Image style = { [touchableStyles.centralImage, touchableStyles.border] } source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+                <View style = {touchableStyles.pageContainer}>
+                    <View style = {touchableStyles.contentContainer}>
+                        <View style = {touchableStyles.frontImageContainer}>
+                            <Image style = { [touchableStyles.image, touchableStyles.border] } source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
+                        </View>
+
+                        <View style = {[touchableStyles.uploadContainer, touchableStyles.border]}>
+                            <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
+                                    <Text style={touchableStyles.uploadText}>▶ Upload New Image</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={ () => {takePicture() } }>
+                                <Text style={touchableStyles.uploadText}>▶ Take a Different Photo</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style = { [touchableStyles.textBox, touchableStyles.border] }>
-                        <TouchableOpacity onPress ={ () => {requestFromCameraRoll() } }>
-                            <Text style={touchableStyles.plainText}>▶ Upload New Image</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={ () => { takePicture() } }>
-                            <Text style={touchableStyles.plainText}>▶ Take a Different Photo</Text>
-                        </TouchableOpacity>
-                    </View> 
-
-                    <View style={touchableStyles.arrowOnRight}>
+                    <View style = {touchableStyles.frontArrowContainer}>
                         <TouchableOpacity onPress={() => { navigation.navigate('Left', img) }}>
                             <Image
                                 style={touchableStyles.rightArrow}
@@ -90,21 +88,25 @@ export default function UploadButton() {
                 </View>
                 )
     }else{
-        //TODO: This will probably be changed later
         return (
-                <View style = { [touchableStyles.parentContainer] }>
-                    <View style = { [touchableStyles.imageContainer, touchableStyles.border] }>
-                        <Image style = {touchableStyles.centralImage} source = { require("../assets/starting-image.png") }/>
+                <View style = {touchableStyles.pageContainer}>
+                    <View style = {touchableStyles.contentContainer}>
+                        <View style = {touchableStyles.frontImageContainer}>
+                            <Image style = {[touchableStyles.image, touchableStyles.border]} source = { require("../assets/starting-image.png") }/>
+                        </View>
+
+                        <View style = {[touchableStyles.uploadContainer, touchableStyles.border]}>
+                            <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
+                                    <Text style={touchableStyles.uploadText}>▶ Upload Image From Camera Roll</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={ () => {takePicture() } }>
+                                <Text style={touchableStyles.uploadText}>▶ Take a Photo and Upload</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style = { [ touchableStyles.border, touchableStyles.textBox] }>  
-                        <TouchableOpacity onPress={ () => {requestFromCameraRoll() } }>
-                                <Text style={touchableStyles.plainText}>▶ Upload Image From Camera Roll</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={ () => {takePicture() } }>
-                            <Text style={touchableStyles.plainText}>▶ Take a Photo and Upload</Text>
-                        </TouchableOpacity>
-                    </View>
+
+                    <View style = {touchableStyles.frontArrowContainer}> {/* this is a spacing placeholder, don't remove */} </View>
                 </View>
         )
     }
-};/**/
+};

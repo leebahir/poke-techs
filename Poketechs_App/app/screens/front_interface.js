@@ -1,7 +1,6 @@
 import React from "react";
-import { Text, SafeAreaView, View, Image, TouchableOpacity } from "react-native";
+import { Text, SafeAreaView, ImageBackground } from "react-native";
 
-// import { touchableStyles } from "../styles/touchableStyles";
 import { stationaryStyles } from "../styles/stationaryStyles";
 
 import { getPerms } from "../backend/getPerms";
@@ -12,12 +11,13 @@ function Front_Interface({ navigation }) {
 
   return (
     <SafeAreaView style={stationaryStyles.container}>
-      <Image 
-        source={require("../assets/top-camera.png")} 
-      />
-
-      <UploadButton/> 
       
+      <ImageBackground style={stationaryStyles.container} source={require("../assets/front-background.png")}>
+
+        <UploadButton/> 
+
+      </ImageBackground>
+
     </SafeAreaView>
   );
 }
