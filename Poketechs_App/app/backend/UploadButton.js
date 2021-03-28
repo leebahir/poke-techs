@@ -17,6 +17,7 @@ export default function UploadButton(){
     const [imageURI, setImageURI] = useState(null)
     const [imageB64, setImageB64] = useState(null)
     const [imageChosen, setImageChosen] = useState(false)
+    const [responseJson, setResponseJson] = useState(null)
     const options = {
         base64: true,
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -59,6 +60,12 @@ export default function UploadButton(){
         }
     }
 
+    const getPrediction = async (imgB64) => {
+        const response = await predict(imgB64);
+        setResponseJson(response);
+        console.log('PREDICTION: ' + JSON.stringify(responseJson));
+    }
+
 
     if (imageChosen){
         //NOTE: I think theres a better way of cascading these styles but it probably doesnt matter because things are gonna move around anyway
@@ -76,7 +83,7 @@ export default function UploadButton(){
                         <Image style = {styles.tempImage} source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
                     </View>
                     <View style = {styles.tempUploadButtons}>
-                        <TouchableOpacity onPress = { () => { predict(imageB64) }}>
+                        <TouchableOpacity onPress = { () => { getPrediction(imageB64) }}>
                             <Text style={styles.tempUploadText}>Analyze!</Text>
                         </TouchableOpacity>
                     </View>

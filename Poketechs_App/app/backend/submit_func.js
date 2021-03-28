@@ -26,11 +26,11 @@ export async function predict(content){
 			}
 		);
 
-		let responseJson = await response.json();
+		const responseJson = await response.json();
 		console.log('RESPONSE: ' + JSON.stringify(responseJson));
-		console.log('RESPONSE: ' + JSON.stringify(responseJson.payload));
-		console.log('RESPONSE: ' + JSON.stringify(responseJson.error));
+		return (responseJson);
 	} catch (error) {
 		console.log(error);
+		return (error);
 	}
 };
