@@ -15,15 +15,8 @@ function Front_Interface({ navigation }) {
       <Image 
         source={require("../assets/top-camera.png")} 
       />
-<<<<<<< HEAD
-          {/*<Text style={stationaryStyles.plainText}>
-        Front Interface
-      </Text>*/}
-    
-=======
 
->>>>>>> ce91cad59003018fbc242b481a73a5571afe6e13
-      <UploadButton/>
+      <UploadButton/> 
       
     </SafeAreaView>
   );

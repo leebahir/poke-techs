@@ -61,57 +61,6 @@ export default function UploadButton() {
         }
     }
 
-<<<<<<< HEAD
-    if (imageChosen) {
-        const img = { img: imageB64 };
-
-        const predictAndNavigate = async (imgB64) => {
-            const responseJson = await predict(imgB64);
-            img.json = responseJson;
-            //console.log('PREDICTION1: ' + JSON.stringify(img.json));
-            navigation.navigate('Left', img);
-        }
-
-        //NOTE: I think theres a better way of cascading these styles but it probably doesnt matter because things are gonna move around anyway
-        // The main purpose of the code here is proof of concept that uploading images works. The functions and returns can just be moved around as needed
-        return (<View style={touchableStyles.uploadContainer}>
-            <View style={touchableStyles.uploadButton}>
-                <TouchableOpacity onPress={() => { requestFromCameraRoll() }}>
-                    <Text style={touchableStyles.uploadText}>Upload New Image</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => { takePicture() }}>
-                    <Text style={touchableStyles.uploadText}>Take a Different Photo</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={touchableStyles.frontImageContainer}>
-                <Image style={touchableStyles.frontImage} source={{ uri: 'data:image/jpeg;base64,' + imageB64 }} />
-            </View>
-            <View style={touchableStyles.uploadButton}>
-                <TouchableOpacity onPress={() => { predictAndNavigate(imageB64) }}>
-                    <Text style={touchableStyles.uploadText}>Analyze!</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={touchableStyles.arrowOnRight}>
-                <TouchableOpacity onPress={() => { navigation.navigate('Left', img) }}>
-                    <Image
-                        style={touchableStyles.rightArrow}
-                        source={require("../assets/temp_right_button.png")}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
-        )
-    } else {
-        return (
-            <View style={touchableStyles.uploadContainer}>
-                <View style={touchableStyles.uploadButton}>
-                    <TouchableOpacity onPress={() => { requestFromCameraRoll() }}>
-                        <Text style={touchableStyles.uploadText}>Upload Image From Camera Roll</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { takePicture() }}>
-                        <Text style={touchableStyles.uploadText}>Take a Photo and Upload</Text>
-                    </TouchableOpacity>
-=======
     if (imageChosen){
         const img = {img: imageB64};
         
@@ -126,10 +75,6 @@ export default function UploadButton() {
 
                         <TouchableOpacity onPress={ () => { takePicture() } }>
                             <Text style={touchableStyles.plainText}>Take a Different Photo</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress = { () => { navigation.navigate('Left', img) }}>
-                            <Text style={touchableStyles.plainText}>Analyze!</Text>
                         </TouchableOpacity>
                     </View> 
 
@@ -155,11 +100,8 @@ export default function UploadButton() {
                         <TouchableOpacity onPress={ () => {takePicture() } }>
                             <Text style={touchableStyles.plainText}>Take a Photo and Upload</Text>
                         </TouchableOpacity>
-                        <Text style={ [touchableStyles.plainText, { color:'gray' } ] }>Analyze!</Text> 
                     </View>
->>>>>>> ce91cad59003018fbc242b481a73a5571afe6e13
                 </View>
-            </View>
         )
     }
 };/**/

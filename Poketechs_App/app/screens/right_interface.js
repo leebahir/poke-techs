@@ -15,7 +15,7 @@ function Right_Interface({ navigation }) {
       <Image source={require("../assets/top-camera.png")} />
       <Text style={stationaryStyles.plainText}>Right Interface</Text>
       <View style={touchableStyles.arrowOnLeft}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={leftPressHandler}>
           <Image
             style={touchableStyles.leftArrow}
             source={require("../assets/temp_right_button.png")}
