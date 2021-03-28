@@ -6,6 +6,7 @@ import { stationaryStyles } from "../styles/stationaryStyles";
 
 function Right_Interface({ navigation, route }) {
     const imageB64 = route.params.img;
+    const txt = route.params.name;
 
     const leftPressHandler = () => {
         navigation.navigate("Left");
@@ -24,8 +25,9 @@ function Right_Interface({ navigation, route }) {
                         <Image style = { [touchableStyles.rightImage, touchableStyles.rightBorder] } source = {{ uri : 'data:image/jpeg;base64,' + imageB64} }/>
                     </View>
 
-                    <View style = {[touchableStyles.resultsContainer, touchableStyles.rightBorder]}>
-                        <Text> All Hail Meureum</Text>
+                        <View style={[touchableStyles.resultsContainer, touchableStyles.rightBorder]}>
+                            <Text> { txt } </Text>
+                            <Text> All Hail Meureum</Text>
                     </View>
 
                 </View>
