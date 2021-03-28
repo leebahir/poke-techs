@@ -13,38 +13,42 @@ We wanted to build a project to learn more about machine learning and app develo
   <img src="https://user-images.githubusercontent.com/60532189/112748641-e5897780-8f71-11eb-9653-71a8124f82b9.PNG" width="225" height="450">
 </div>
 
-# Inspiration
-- Pokémon
-- iNaturalist
+## Inspiration
+- Pokémon!!
+- Computer Vision
+- iNaturalist concept and dataset
 
-# What it does
-- Uses Pokedex interface to generates species prediction(s) for user-uploaded picture
-- Generates a Pokemon card for "captured" specimen
+## What it does
+- Uses a cloud trained classification model to identify the animal from an image
+- Generates a Pokémon card for "captured" specimen
 
-# How we built it
+## How we built it
 - Extracted subset of iNaturalist images dataset that was of interest (more common animals)
 - Generated CSV for dataset annotation (multi-label) using Python
 - Trained custom model from our dataset using Google Vision AutoML
 - Built the app using React-Native (Expo)
 - Designed elements with Figma
 
-# Challenges we ran into
-- Dealing with such a large dataset
+## Challenges we ran into
+- Dealing with such a large dataset that initially had thousands of different classification labels
 - Learning React-Native, especially how to properly make requests to our custom model in the cloud
 
-# Accomplishments that we're proud of
+## Accomplishments that we're proud of
 - Having a trained model that can make somewhat accurate predictions for common animals
 - Having a fun and nostalgic interface!
 - Creating an app where you can navigate across different screens while preserving information
 
-# What we learned
+## What we learned
 - How to use Google Cloud and Vision AutoML
 - What goes into app creation
 - React-Native: navigation, styling, camera permissions and usage
 
-# What's next for Poke-techs
+## What's next for Poke-techs
 - Use Firebase to set up accounts so users can save and share "captured" animals
 - Set up location so users have a checklist of all local animals in order to "catch them all!"
-- Use iNaturalist annotations and/or web-scraping to get facts to display to user
+- Use iNaturalist annotations and/or web-scraping to get facts about the animal identified to display to user
 - Improve our custom ML model to recognize differences between more similar species with better recall and precision
-- Improve styling with gifs, custom animations across screens, and elements which more closely emulate Pokemon designs
+- Move ML model offline for local download so money/credits is not wasted through continual deployment
+- Improve styling with gifs, custom animations across screens, and elements which more closely emulate Pokémon designs
+
+
