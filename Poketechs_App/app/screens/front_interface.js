@@ -10,7 +10,7 @@ function Front_Interface({ navigation }) {
   getPerms()
 
   const pressHandler = () => {
-    navigation.navigate("Left", {test: "help me"});
+    navigation.navigate("Left");
   };
 
   return (
